@@ -1,0 +1,829 @@
+<!DOCTYPE html>
+<html lang="pt-PT">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>AEI8 – PALDIM | IA, Literacia Digital e Cidadania Digital</title>
+
+  <meta name="description" content="Hub central de recursos AEI8 – PALDIM | TEIP4 sobre Inteligência Artificial, literacia digital, cidadania digital, segurança online e educação, dirigido a pais, alunos e professores." />
+  <meta name="author" content="Ana Margarida Fonseca" />
+
+  <style>
+    :root {
+      --navy: #0B1F3A;
+      --blue: #1F4E79;
+      --teal: #2EC4B6;
+      --light: #F2F4F7;
+      --white: #FFFFFF;
+      --ink: #1C2430;
+      --muted: #5B6675;
+      --soft-blue: #EAF2F8;
+      --soft-teal: #E9FAF8;
+      --soft-yellow: #FFF8DE;
+      --yellow: #F7D774;
+      --shadow: 0 18px 45px rgba(11, 31, 58, 0.14);
+      --radius: 28px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: "Segoe UI", system-ui, -apple-system, BlinkMacSystemFont, Arial, sans-serif;
+      background:
+        radial-gradient(circle at 10% 8%, rgba(46, 196, 182, 0.15), transparent 30%),
+        radial-gradient(circle at 90% 15%, rgba(247, 215, 116, 0.18), transparent 28%),
+        linear-gradient(135deg, #F8FAFC 0%, #EEF7F5 50%, #F2F4F7 100%);
+      color: var(--ink);
+      line-height: 1.6;
+      min-height: 100vh;
+    }
+
+    a {
+      color: inherit;
+    }
+
+    .wrap {
+      width: min(1180px, calc(100% - 36px));
+      margin: 0 auto;
+    }
+
+    header {
+      margin: 28px auto 34px;
+      padding: 58px 44px;
+      border-radius: 38px;
+      color: var(--white);
+      background:
+        radial-gradient(circle at 88% 18%, rgba(46, 196, 182, 0.32), transparent 28%),
+        linear-gradient(135deg, var(--navy), var(--blue));
+      box-shadow: var(--shadow);
+      overflow: hidden;
+      position: relative;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 34px;
+      align-items: center;
+      position: relative;
+      z-index: 1;
+    }
+
+    .kicker {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: rgba(255,255,255,0.12);
+      border: 1px solid rgba(255,255,255,0.22);
+      color: #E9FFFA;
+      padding: 9px 15px;
+      border-radius: 999px;
+      font-size: 0.94rem;
+      font-weight: 700;
+      margin-bottom: 20px;
+    }
+
+    h1 {
+      font-size: clamp(2.25rem, 5vw, 4.8rem);
+      line-height: 1.02;
+      letter-spacing: -0.055em;
+      margin-bottom: 18px;
+    }
+
+    .subtitle {
+      font-size: clamp(1.05rem, 2vw, 1.34rem);
+      max-width: 780px;
+      color: rgba(255,255,255,0.88);
+      margin-bottom: 28px;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 6px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 999px;
+      padding: 13px 18px;
+      text-decoration: none;
+      font-weight: 800;
+      transition: 0.2s ease;
+      font-size: 0.98rem;
+      min-height: 46px;
+    }
+
+    .btn.primary {
+      background: var(--yellow);
+      color: var(--navy);
+    }
+
+    .btn.secondary {
+      background: rgba(255,255,255,0.12);
+      color: var(--white);
+      border: 1px solid rgba(255,255,255,0.26);
+    }
+
+    .btn:hover,
+    .btn:focus {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 24px rgba(0,0,0,0.16);
+      outline: none;
+    }
+
+    .credit {
+      margin-top: 26px;
+      color: rgba(255,255,255,0.82);
+      font-size: 0.96rem;
+      line-height: 1.55;
+    }
+
+    .hero-card {
+      background: rgba(255,255,255,0.12);
+      border: 1px solid rgba(255,255,255,0.2);
+      border-radius: 30px;
+      padding: 28px;
+      min-height: 310px;
+      display: grid;
+      align-content: center;
+      backdrop-filter: blur(10px);
+    }
+
+    .hero-card h2 {
+      color: var(--white);
+      font-size: clamp(1.5rem, 2.6vw, 2.3rem);
+      line-height: 1.15;
+      margin-bottom: 18px;
+    }
+
+    .hero-card ul {
+      list-style: none;
+      display: grid;
+      gap: 12px;
+    }
+
+    .hero-card li {
+      background: rgba(255,255,255,0.1);
+      border: 1px solid rgba(255,255,255,0.14);
+      border-radius: 18px;
+      padding: 12px 14px;
+      color: rgba(255,255,255,0.9);
+      font-weight: 650;
+    }
+
+    .main-nav {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      display: flex;
+      gap: 8px;
+      overflow-x: auto;
+      scrollbar-width: none;
+      padding: 9px;
+      margin-bottom: 30px;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.92);
+      backdrop-filter: blur(14px);
+      border: 1px solid rgba(11,31,58,0.08);
+      box-shadow: 0 10px 30px rgba(11,31,58,0.08);
+    }
+
+    .main-nav::-webkit-scrollbar {
+      display: none;
+    }
+
+    .main-nav a {
+      white-space: nowrap;
+      text-decoration: none;
+      color: var(--navy);
+      font-weight: 800;
+      padding: 10px 15px;
+      border-radius: 999px;
+      font-size: 0.94rem;
+      min-height: 42px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .main-nav a:hover,
+    .main-nav a:focus {
+      background: var(--soft-teal);
+      outline: none;
+    }
+
+    section {
+      margin: 36px 0;
+      scroll-margin-top: 90px;
+    }
+
+    .section-head {
+      margin-bottom: 20px;
+    }
+
+    .eyebrow {
+      color: var(--blue);
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      font-size: 0.78rem;
+      margin-bottom: 7px;
+    }
+
+    h2 {
+      color: var(--navy);
+      font-size: clamp(1.8rem, 3vw, 2.75rem);
+      line-height: 1.08;
+      letter-spacing: -0.04em;
+      margin-bottom: 8px;
+    }
+
+    .lead {
+      color: var(--muted);
+      max-width: 860px;
+      font-size: 1.05rem;
+    }
+
+    .grid {
+      display: grid;
+      gap: 18px;
+    }
+
+    .grid.three {
+      grid-template-columns: repeat(3, 1fr);
+    }
+
+    .grid.two {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    .card {
+      background: rgba(255,255,255,0.92);
+      border: 1px solid rgba(11,31,58,0.08);
+      border-radius: var(--radius);
+      padding: 25px;
+      box-shadow: 0 10px 30px rgba(11,31,58,0.08);
+      transition: 0.2s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 16px 34px rgba(11,31,58,0.12);
+    }
+
+    .card h3 {
+      color: var(--navy);
+      font-size: 1.28rem;
+      line-height: 1.2;
+      margin: 12px 0 8px;
+    }
+
+    .card p {
+      color: var(--muted);
+    }
+
+    .icon {
+      width: 52px;
+      height: 52px;
+      display: grid;
+      place-items: center;
+      border-radius: 18px;
+      background: var(--soft-teal);
+      color: var(--blue);
+      font-weight: 900;
+      font-size: 1.35rem;
+    }
+
+    .icon.yellow {
+      background: #FFF4D6;
+      color: #705600;
+    }
+
+    .icon.blue {
+      background: var(--soft-blue);
+      color: var(--blue);
+    }
+
+    .link-card {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      min-height: 320px;
+    }
+
+    .status {
+      display: inline-flex;
+      align-self: flex-start;
+      margin-bottom: 12px;
+      border-radius: 999px;
+      padding: 6px 11px;
+      background: var(--soft-teal);
+      color: #176B5E;
+      font-size: 0.78rem;
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .link-card a {
+      margin-top: 20px;
+      align-self: flex-start;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      text-decoration: none;
+      color: var(--navy);
+      background: var(--yellow);
+      padding: 10px 15px;
+      border-radius: 999px;
+      font-weight: 900;
+      font-size: 0.92rem;
+      line-height: 1.2;
+      min-height: 42px;
+      transition: 0.18s ease;
+    }
+
+    .link-card a:hover,
+    .link-card a:focus {
+      transform: translateY(-1px);
+      box-shadow: 0 8px 18px rgba(11,31,58,0.12);
+      outline: none;
+    }
+
+    .callout {
+      margin-top: 20px;
+      background: linear-gradient(135deg, #FFFFFF, #F5FBFA);
+      border-left: 7px solid var(--teal);
+      border-radius: 24px;
+      padding: 22px 24px;
+      box-shadow: 0 10px 28px rgba(11,31,58,0.08);
+    }
+
+    .callout strong {
+      color: var(--navy);
+    }
+
+    .timeline {
+      display: grid;
+      gap: 14px;
+      margin-top: 20px;
+    }
+
+    .timeline-item {
+      background: rgba(255,255,255,0.92);
+      border: 1px solid rgba(11,31,58,0.08);
+      border-left: 7px solid var(--teal);
+      border-radius: 22px;
+      padding: 18px 20px;
+      box-shadow: 0 10px 30px rgba(11,31,58,0.08);
+    }
+
+    .timeline-item strong {
+      color: var(--navy);
+      display: block;
+      margin-bottom: 4px;
+    }
+
+    .timeline-item p {
+      color: var(--muted);
+    }
+
+    .footer {
+      margin: 46px 0 28px;
+      padding: 42px 24px;
+      border-radius: 34px;
+      background: var(--navy);
+      color: var(--white);
+      border-top: 7px solid var(--teal);
+      text-align: center;
+      box-shadow: var(--shadow);
+    }
+
+    .footer-inner {
+      max-width: 920px;
+      margin: 0 auto;
+    }
+
+    .footer-kicker {
+      color: var(--teal);
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      font-size: 0.9rem;
+      margin-bottom: 14px;
+    }
+
+    .footer-description {
+      color: rgba(255,255,255,0.88);
+      font-size: 1.05rem;
+      line-height: 1.6;
+      margin-bottom: 20px;
+    }
+
+    .footer-authorship {
+      color: rgba(255,255,255,0.84);
+      font-size: 0.98rem;
+      line-height: 1.6;
+      margin-bottom: 18px;
+    }
+
+    .footer-authorship strong {
+      color: var(--white);
+      font-weight: 900;
+    }
+
+    .footer-privacy {
+      display: inline-block;
+      background: var(--light);
+      color: var(--navy);
+      border-radius: 999px;
+      padding: 10px 16px;
+      font-weight: 800;
+      font-size: 0.9rem;
+      line-height: 1.45;
+    }
+
+    @media (max-width: 920px) {
+      .hero-grid,
+      .grid.three,
+      .grid.two {
+        grid-template-columns: 1fr;
+      }
+
+      header {
+        padding: 38px 24px;
+      }
+
+      .hero-card {
+        min-height: auto;
+      }
+
+      .link-card {
+        min-height: auto;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .wrap {
+        width: min(100% - 22px, 1180px);
+      }
+
+      header {
+        margin-top: 14px;
+        padding: 32px 20px;
+        border-radius: 28px;
+      }
+
+      .kicker {
+        font-size: 0.82rem;
+        padding: 7px 12px;
+        margin-bottom: 16px;
+      }
+
+      h1 {
+        font-size: clamp(2rem, 12vw, 2.75rem);
+        letter-spacing: -0.045em;
+      }
+
+      .subtitle {
+        font-size: 1rem;
+        margin-bottom: 22px;
+      }
+
+      .hero-actions {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 10px;
+      }
+
+      .btn {
+        width: 100%;
+        min-height: 48px;
+        padding: 12px 16px;
+      }
+
+      .credit {
+        font-size: 0.9rem;
+        line-height: 1.5;
+      }
+
+      .hero-card {
+        padding: 20px;
+        border-radius: 24px;
+      }
+
+      .hero-card h2 {
+        font-size: 1.45rem;
+      }
+
+      .hero-card li {
+        padding: 11px 12px;
+        font-size: 0.95rem;
+      }
+
+      .main-nav {
+        position: static;
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        border-radius: 22px;
+        gap: 8px;
+        padding: 10px;
+        margin-bottom: 26px;
+      }
+
+      .main-nav a {
+        white-space: normal;
+        text-align: center;
+        border-radius: 18px;
+        background: #F8FAFC;
+        border: 1px solid rgba(11,31,58,0.08);
+        padding: 10px 8px;
+        font-size: 0.86rem;
+      }
+
+      section {
+        margin: 28px 0;
+        scroll-margin-top: 18px;
+      }
+
+      h2 {
+        font-size: 1.85rem;
+      }
+
+      .lead {
+        font-size: 0.98rem;
+      }
+
+      .card {
+        padding: 20px;
+        border-radius: 22px;
+      }
+
+      .card:hover {
+        transform: none;
+      }
+
+      .link-card a {
+        width: 100%;
+      }
+
+      .callout {
+        padding: 19px 20px;
+        border-radius: 20px;
+      }
+
+      .footer {
+        padding: 34px 20px;
+        border-radius: 26px;
+      }
+
+      .footer-description {
+        font-size: 0.96rem;
+      }
+
+      .footer-privacy {
+        display: block;
+        border-radius: 18px;
+        font-size: 0.86rem;
+      }
+    }
+
+    @media (max-width: 390px) {
+      .main-nav {
+        grid-template-columns: 1fr;
+      }
+
+      h1 {
+        font-size: 1.95rem;
+      }
+
+      .card h3 {
+        font-size: 1.16rem;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <main class="wrap">
+
+    <header id="inicio">
+      <div class="hero-grid">
+        <div>
+          <div class="kicker">AEI8 – PALDIM | TEIP4</div>
+
+          <h1>IA, Literacia Digital e Cidadania Digital</h1>
+
+          <p class="subtitle">
+            Hub central de recursos educativos para pais e encarregados de educação,
+            alunos e professores, no âmbito da AEI8 – PALDIM | TEIP4.
+          </p>
+
+          <div class="hero-actions">
+            <a class="btn primary" href="#ecossistema">Entrar no ecossistema</a>
+            <a class="btn secondary" href="#pais">Pais e EE</a>
+            <a class="btn secondary" href="#alunos">Alunos</a>
+            <a class="btn secondary" href="#professores">Professores</a>
+          </div>
+
+          <p class="credit">
+            Recurso educativo desenvolvido no âmbito da AEI8 – PALDIM | TEIP4.<br>
+            Conceção pedagógica, estruturação de conteúdos e desenvolvimento:
+            <strong>Ana Margarida Fonseca — Professora e Formadora</strong>.
+          </p>
+        </div>
+
+        <aside class="hero-card" aria-label="Objetivos do ecossistema">
+          <h2>Um ecossistema de recursos para aprender, acompanhar e ensinar com mais critério.</h2>
+          <ul>
+            <li>Literacia digital e mediática.</li>
+            <li>Uso crítico, ético e responsável da IA.</li>
+            <li>Segurança online e cidadania digital.</li>
+            <li>Apoio a alunos, famílias e professores.</li>
+          </ul>
+        </aside>
+      </div>
+    </header>
+
+    <nav class="main-nav" aria-label="Navegação principal">
+      <a href="#ecossistema">Ecossistema</a>
+      <a href="#pais">Pais e EE</a>
+      <a href="#alunos">Alunos</a>
+      <a href="#professores">Professores</a>
+      <a href="#enquadramento">Enquadramento</a>
+      <a href="#sobre">Sobre</a>
+    </nav>
+
+    <section id="ecossistema">
+      <div class="section-head">
+        <div class="eyebrow">Entrada principal</div>
+        <h2>Escolha o espaço adequado</h2>
+        <p class="lead">
+          Este hub organiza os recursos AEI8 – PALDIM | TEIP4 por público-alvo,
+          garantindo maior clareza, navegabilidade e separação entre materiais
+          destinados a famílias, alunos e professores.
+        </p>
+      </div>
+
+      <div class="grid three">
+        <article class="card link-card" id="pais">
+          <div>
+            <span class="status">Famílias</span>
+            <div class="icon yellow">F</div>
+            <h3>IA em Família</h3>
+            <p>
+              Recursos para pais e encarregados de educação sobre Inteligência Artificial,
+              jovens, literacia digital, segurança online e acompanhamento familiar.
+            </p>
+          </div>
+          <a href="https://anafonseca.github.io/ia-em-familia/">Entrar no espaço das famílias</a>
+        </article>
+
+        <article class="card link-card" id="alunos">
+          <div>
+            <span class="status">Alunos</span>
+            <div class="icon blue">A</div>
+            <h3>IA para Alunos</h3>
+            <p>
+              Recursos para alunos sobre IA generativa, estudo, prompts,
+              literacia digital, pensamento crítico, segurança online e cidadania digital.
+            </p>
+          </div>
+          <a href="https://anafonseca.github.io/ia-alunos-paldim/">Entrar no espaço dos alunos</a>
+        </article>
+
+        <article class="card link-card" id="professores">
+          <div>
+            <span class="status">Professores</span>
+            <div class="icon">P</div>
+            <h3>IA para Professores</h3>
+            <p>
+              Recursos para professores sobre integração pedagógica da IA,
+              prompts, inclusão, diferenciação, avaliação, ética e prática docente.
+            </p>
+          </div>
+          <a href="https://anafonseca.github.io/ia-professores-paldim/">Entrar no espaço dos professores</a>
+        </article>
+      </div>
+
+      <div class="callout">
+        <strong>Ideia-chave:</strong> a Inteligência Artificial deve ser trabalhada
+        com os alunos, com as famílias e com os professores, articulando literacia,
+        proteção, responsabilidade, pensamento crítico e aprendizagem.
+      </div>
+    </section>
+
+    <section id="enquadramento">
+      <div class="section-head">
+        <div class="eyebrow">AEI8 – PALDIM | TEIP4</div>
+        <h2>Enquadramento do ecossistema</h2>
+        <p class="lead">
+          Este conjunto de recursos foi desenvolvido no âmbito da AEI8 – PALDIM | TEIP4,
+          integrando uma abordagem formativa e educativa centrada na literacia digital,
+          na inteligência artificial, na segurança online e na cidadania digital.
+        </p>
+      </div>
+
+      <div class="timeline">
+        <div class="timeline-item">
+          <strong>Pais e encarregados de educação</strong>
+          <p>
+            Apoio à compreensão da IA, dos riscos digitais, das práticas dos jovens
+            e do acompanhamento familiar informado e sereno.
+          </p>
+        </div>
+
+        <div class="timeline-item">
+          <strong>Alunos</strong>
+          <p>
+            Recursos para compreender a IA, usar ferramentas digitais com pensamento crítico,
+            estudar melhor, verificar informação e proteger a privacidade.
+          </p>
+        </div>
+
+        <div class="timeline-item">
+          <strong>Professores</strong>
+          <p>
+            Materiais de apoio à integração pedagógica da IA, à diferenciação,
+            à inclusão, à avaliação e à literacia digital em contexto escolar.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section id="sobre">
+      <div class="section-head">
+        <div class="eyebrow">Sobre este hub</div>
+        <h2>Uma página-mãe para organizar o ecossistema PALDIM</h2>
+        <p class="lead">
+          Esta página funciona como ponto de entrada para os diferentes espaços digitais
+          desenvolvidos no âmbito da AEI8 – PALDIM | TEIP4. A sua função é garantir
+          uma arquitetura clara, tecnicamente simples e pedagogicamente coerente,
+          separando os recursos por público-alvo e facilitando o acesso.
+        </p>
+      </div>
+    </section>
+
+    <footer class="footer" aria-label="Informação sobre o projeto">
+      <div class="footer-inner">
+
+        <p class="footer-kicker">
+          AEI8 – PALDIM | TEIP4
+        </p>
+
+        <p class="footer-description">
+          Hub central de recursos educativos sobre Inteligência Artificial,
+          literacia digital, literacia mediática, segurança online e cidadania digital,
+          dirigido a pais e encarregados de educação, alunos e professores.
+        </p>
+
+        <p class="footer-description">
+          Desenvolvido no âmbito do plano de ação de literacia digital,
+          inteligência artificial e cidadania digital associado à AEI8 – PALDIM | TEIP4.
+        </p>
+
+        <p class="footer-authorship">
+          Conceção pedagógica, estruturação de conteúdos e desenvolvimento:<br>
+          <strong>Ana Margarida Fonseca — Professora e Formadora</strong>
+        </p>
+
+        <p class="footer-privacy">
+          Recurso estático, publicado via GitHub Pages, sem login, sem formulários,
+          sem backend próprio e sem recolha ativa de dados.
+        </p>
+
+      </div>
+    </footer>
+
+  </main>
+
+  <script>
+    const links = document.querySelectorAll('a[href^="#"]');
+
+    links.forEach(link => {
+      link.addEventListener('click', event => {
+        const href = link.getAttribute('href');
+        const target = document.querySelector(href);
+
+        if (target) {
+          event.preventDefault();
+          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      });
+    });
+  </script>
+</body>
+</html>
